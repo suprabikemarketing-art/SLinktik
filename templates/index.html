@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slink Tik - Baixar Vídeos do TikTok sem Marca D'Água</title>
+    <meta name="description" content="Baixe vídeos do TikTok em HD e 4K sem marca d'água. Salve em MP4 ou extraia o áudio em MP3. Rápido, grátis e ilimitado!">
+    <meta property="og:title" content="Slink Tik - Baixar Vídeos do TikTok sem Marca D'Água">
+    <meta property="og:description" content="Baixe vídeos do TikTok em HD e 4K sem marca d'água. Salve em MP4 ou extraia o áudio em MP3.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=2">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo" id="logoLink">
+                <span class="logo-text">S <span class="logo-white">Link</span><span class="logo-accent"> Tik</span></span>
+            </a>
+            <div class="header-right-logo">
+                <span class="wision-logo-w">W</span>ISIONARIU<span class="wision-logo-m">M</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <!-- Center Pill Badge -->
+                <div class="gratis-badge">
+                    <span class="green-dot"></span>
+                    100% GRÁTIS & ILIMITADO
+                </div>
+                
+                <h1 class="hero-title">
+                    Baixe Vídeos do TikTok<br>
+                    <span class="gradient-text">Sem Marca D'Água</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Salve vídeos em 4k ou extraia o áudio. Rápido, grátis e sem limites.
+                </p>
+
+                <!-- Video Preview Device Mockup -->
+                <div id="videoPreviewContainer" class="video-preview-container" style="display: none;">
+                    <div class="device-mockup">
+                        <div class="device-notch"></div>
+                        <div class="device-screen">
+                            <!-- Loading Spinner -->
+                            <div id="previewLoader" class="preview-loader">
+                                <div class="preview-spinner"></div>
+                                <span class="preview-loading-text">Carregando prévia...</span>
+                            </div>
+                            <!-- Default SVG Placeholder (hills/cloud) -->
+                            <div id="previewPlaceholder" class="preview-placeholder">
+                                <svg viewBox="0 0 100 150" preserveAspectRatio="none" class="placeholder-svg">
+                                    <defs>
+                                        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stop-color="#4ea8de" />
+                                            <stop offset="100%" stop-color="#90e0ef" />
+                                        </linearGradient>
+                                        <linearGradient id="hill1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#72efdd" />
+                                            <stop offset="100%" stop-color="#38b000" />
+                                        </linearGradient>
+                                        <linearGradient id="hill2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#52b788" />
+                                            <stop offset="100%" stop-color="#2d6a4f" />
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="100" height="150" fill="url(#skyGrad)" />
+                                    <path d="M 30,60 A 12,12 0 0,1 50,48 A 15,15 0 0,1 78,55 A 12,12 0 0,1 78,75 L 30,75 Z" fill="#ffffff" opacity="0.9" />
+                                    <path d="M -10,150 L -10,120 Q 30,90 70,120 L 110,100 L 110,150 Z" fill="url(#hill2Grad)" />
+                                    <path d="M -10,150 L -10,135 Q 40,110 80,140 L 110,125 L 110,150 Z" fill="url(#hill1Grad)" />
+                                </svg>
+                            </div>
+                            <!-- Video Thumbnail -->
+                            <img id="previewThumbnail" class="preview-thumbnail" src="" alt="Video Preview" style="display: none;" />
+                            <!-- Video Info Overlay -->
+                            <div id="previewInfoOverlay" class="preview-info-overlay" style="display: none;">
+                                <p id="previewAuthor" class="preview-author">@username</p>
+                                <p id="previewTitle" class="preview-title">Video title...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Form -->
+                <div class="download-form-wrapper">
+                    <form id="downloadForm" class="download-form" onsubmit="return false;">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                </svg>
+                            </div>
+                            <input
+                                type="text"
+                                id="urlInput"
+                                name="url"
+                                placeholder="Cole o link do TikTok aqui..."
+                                autocomplete="off"
+                                required
+                            >
+                            <button type="button" id="pasteBtn" class="btn-paste" title="Colar do clipboard">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                                </svg>
+                            </button>
+                            <button type="button" id="clearBtn" class="btn-clear" title="Limpar" style="display:none;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"/>
+                                    <line x1="6" y1="6" x2="18" y2="18"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Side-by-side action buttons -->
+                        <div class="action-buttons-group">
+                            <button type="button" id="btnActionVideo" class="btn-action-video">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="23 7 16 12 23 17 23 7"/>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                                </svg>
+                                <span>Vídeo</span>
+                            </button>
+                            <button type="button" id="btnActionAudio" class="btn-action-audio">
+                                <div class="audio-main">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18V5l12-2v13"/>
+                                        <circle cx="6" cy="18" r="3"/>
+                                        <circle cx="18" cy="16" r="3"/>
+                                    </svg>
+                                    <span>Áudio</span>
+                                </div>
+                                <span class="audio-sub">mp3</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorContainer" class="error-container" style="display:none;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    <span id="errorMessage"></span>
+                </div>
+
+                <!-- Inline Steps "Como Baixar" -->
+                <div class="como-baixar-wrapper">
+                    <h3 class="como-baixar-title">Como <span class="highlight-pink">Baixar</span>?</h3>
+                    <div class="como-baixar-steps">
+                        <div class="como-step">
+                            <span class="step-num">1</span> Encontre o vídeo
+                        </div>
+                        <div class="como-step">
+                            <span class="step-num">2</span> Copie o link
+                        </div>
+                        <div class="como-step">
+                            <span class="step-num">3</span> Cole e baixe
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative Glow -->
+            <div class="hero-glow"></div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <h2 class="section-title">Perguntas <span class="gradient-text">Frequentes</span></h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-1">
+                            <span>É gratuito baixar vídeos do TikTok sem marca d'água?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! O Slink Tik é completamente gratuito. Baixe quantos vídeos quiser sem nenhum custo, registro ou instalação.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-2">
+                            <span>Em que qualidade os vídeos são baixados?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Os vídeos são baixados na melhor qualidade disponível, geralmente HD (720p) ou Full HD (1080p), dependendo da qualidade original do vídeo publicado no TikTok.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-3">
+                            <span>Posso baixar vídeos de contas privadas?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Não, o Slink Tik só pode baixar vídeos de contas públicas. Vídeos de contas privadas não são acessíveis.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-4">
+                            <span>Como extrair apenas o áudio (MP3) de um TikTok?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Cole o link do vídeo, clique em "Áudio" e o áudio original do vídeo será extraído e baixado de forma rápida e direta.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-5">
+                            <span>Funciona no celular?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! O Slink Tik funciona em qualquer dispositivo com navegador: Android, iPhone, iPad, PC, Mac e Linux.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" id="faq-btn-6">
+                            <span>Os vídeos baixados ficam salvos onde?</span>
+                            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Os vídeos são salvos na pasta de downloads padrão do seu navegador. Você pode alterar esta pasta nas configurações do navegador.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">S <span class="logo-white">Link</span><span class="logo-accent"> Tik</span></span>
+                    <p>Baixador de vídeos do TikTok sem marca d'água em HD e Ultra HD 4K.</p>
+                </div>
+                <div class="footer-disclaimer">
+                    <p>⚠️ Não somos afiliados ao TikTok ou ByteDance. Use este serviço de forma responsável.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Create by Wisionarium</p>
+                <p>&copy; 2025-2026 Slink Tik. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Download Modal Options (Popup) -->
+    <div id="videoDownloadModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <button id="closeModalBtn" class="btn-close-modal" aria-label="Fechar Modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <h3 class="modal-title">Baixar</h3>
+            
+            <div class="modal-buttons" id="modalMainContent">
+                <button id="modalBtnFullHd" class="btn-modal-download btn-modal-white">
+                    <span class="title">VÍDEO FULL HD</span>
+                    <span class="subtitle">Instantaneamente</span>
+                </button>
+                
+                <button id="modalBtn4k" class="btn-modal-download btn-modal-pink">
+                    <span class="title">VÍDEO 4K</span>
+                    <span class="subtitle">Anúncio 🎬</span>
+                </button>
+                
+                <p class="modal-note">
+                    ASSISTA ALGUNS SEGUNDINHOS DO ANÚNCIO E <span class="highlight-pink">BAIXE SEU VÍDEO EM 4K.</span>
+                </p>
+            </div>
+
+            <!-- Progress Indicator inside the modal (shown during download) -->
+            <div id="modalProgressContainer" class="modal-progress-container" style="display: none;">
+                <div class="modal-progress-bar-wrapper">
+                    <div id="modalProgressBar" class="modal-progress-bar" style="width: 0%;"></div>
+                </div>
+                <div class="modal-progress-info">
+                    <span id="modalProgressStatus">Iniciando download...</span>
+                    <span id="modalProgressPercent">0%</span>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <div class="wision-logo-modal">
+                    <span class="wision-logo-w">W</span>ISIONARIU<span class="wision-logo-m">M</span>
+                </div>
+                <p class="nossa-equipe">NOSSA EQUIPE AGRADECE 🥰</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Toast Progress for Audio (Since it doesn't open modal) -->
+    <div id="audioProgressToast" class="progress-toast" style="display: none;">
+        <div class="toast-content">
+            <div class="toast-spinner"></div>
+            <div class="toast-details">
+                <span id="audioProgressStatus">Baixando áudio...</span>
+                <div class="toast-bar-wrapper">
+                    <div id="audioProgressBar" class="toast-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <span id="audioProgressPercent">0%</span>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js?v=2"></script>
+</body>
+</html>
